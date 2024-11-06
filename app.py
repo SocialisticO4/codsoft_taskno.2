@@ -3,12 +3,12 @@ import math
 
 app = Flask(__name__)
 
-# Constants for players
+# players assignment
 HUMAN = "X"
 AI = "O"
 EMPTY = None
 
-# Initial empty board state
+# fisrt board game
 board = [EMPTY] * 9
 
 # Function to check for a win
@@ -20,7 +20,7 @@ def check_win(board, player):
     ]
     return any(all(board[cell] == player for cell in combo) for combo in winning_combinations)
 
-# Minimax algorithm without Alpha-Beta Pruning
+# To run the game with AI
 def minimax(board, depth, is_maximizing):
     if check_win(board, AI):
         return 10 - depth
@@ -48,7 +48,7 @@ def minimax(board, depth, is_maximizing):
                 best_score = min(best_score, score)
         return best_score
 
-# Function to get the best move for the AI
+
 def get_best_move(board):
     best_score = -math.inf
     best_move = None
